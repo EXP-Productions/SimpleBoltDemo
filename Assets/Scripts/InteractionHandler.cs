@@ -10,8 +10,9 @@ public class InteractionHandler : MonoBehaviour
     {
         if(Input.GetKeyDown(_InteractionKey))
         {
+            Debug.DrawRay(_CamTransform.position, _CamTransform.forward, Color.green);
             RaycastHit hit;
-            if (Physics.Raycast(_CamTransform.position, Vector3.forward, out hit, 100f))
+            if (Physics.Raycast(_CamTransform.position, _CamTransform.forward, out hit, 100f))
             {
                 IInteractable hitInteractable = hit.collider.gameObject.GetComponent<IInteractable>();
                 if(hitInteractable != null)
